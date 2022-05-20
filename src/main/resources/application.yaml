@@ -4,12 +4,12 @@ server:
 cloud:
   aws:
     credentials:
-      access-key: AKIAZDZ5DSYJC4OIP3TF
+      access-key: 
       
   cloud:
    aws:
       credentials:
-      secret-key: G2CF5Nq6DS7TvZHan2V238NlKV42a/9p6SdMZJLx
+      secret-key: 
          
    cloud:
       aws:
