@@ -5,7 +5,6 @@ import org.hibernate.annotations.Entity;
 import com.quintrix.carportalcarmicroservice.customer.CustomerModel;
 
 @SuppressWarnings("deprecation")
-
 @Entity
 public class CarEntity {
 

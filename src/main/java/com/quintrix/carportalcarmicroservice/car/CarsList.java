@@ -15,7 +15,6 @@ public class CarsList {
     this.cars = cars;
   }
 
-
   public void addCar(CarMinimal car) {
     this.cars.add(car);
   }
