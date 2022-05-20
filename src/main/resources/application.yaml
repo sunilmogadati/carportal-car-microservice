@@ -1,2 +1,32 @@
 server:
-	port: 8080
+    port: 8080
+  
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAZDZ5DSYJC4OIP3TF
+      
+  cloud:
+   aws:
+      credentials:
+      secret-key: G2CF5Nq6DS7TvZHan2V238NlKV42a/9p6SdMZJLx
+         
+   cloud:
+      aws:
+       region:
+       static: us-east-1
+         
+      cloud:
+        aws:
+         stack:
+         auto: false
+
+spring:
+  servlet:
+     multipart:
+     max-file-size: 100MB
+
+  spring:
+    servlet:
+      mulipart:
+      max-request-size: 100MB
