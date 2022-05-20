@@ -28,5 +28,5 @@ spring:
 
   spring:
     servlet:
-      mulipart:
+      multipart:
       max-request-size: 100MB
