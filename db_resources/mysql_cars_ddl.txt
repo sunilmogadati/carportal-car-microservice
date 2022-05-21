@@ -16,6 +16,7 @@ Create table If Not Exists `car_photos` (
         `id` int AUTO_INCREMENT,
         `car_info_id` varchar(36),
         `aws_s3_url` varchar(2048) not null,
+        `display_order` int,
         Primary Key (id),
         Foreign Key (car_info_id)
                 references car_info (id) 
