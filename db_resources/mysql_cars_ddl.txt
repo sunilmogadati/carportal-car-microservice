@@ -1,0 +1,24 @@
+Create Database If Not Exists cars
+
+Create table If Not Exists `car_info` (
+	`id` varchar(36),
+	`make` varchar(50),
+	`model` varchar(50),
+	`year` int,
+	`mileage` int,
+	`list_price` int,
+	`kbb_est` int default null,
+	`desc` varchar(1000),
+	Primary Key (id)
+)
+
+Create table If Not Exists `car_photos` (
+        `id` int AUTO_INCREMENT,
+        `car_info_id` varchar(36),
+        `aws_s3_url` varchar(2048) not null,
+        `display_order` int,
+        Primary Key (id),
+        Foreign Key (car_info_id)
+                references car_info (id) 
+                ON DELETE CASCADE
+)
