@@ -17,6 +17,7 @@ public class SoapApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
+    // This prints directly to terminal. We can delete this is we choose not to use it
     Calculator calcService = new Calculator();
     CalculatorSoap calculatorSoapProxy = calcService.getCalculatorSoap();
     System.out.println(calculatorSoapProxy.add(7, 5));
