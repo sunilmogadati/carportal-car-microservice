@@ -1,7 +1,12 @@
 package com.quintrix.carportalcarmicroservice.car;
 
+import org.hibernate.annotations.Entity;
+
+@SuppressWarnings("deprecation")
+@Entity
 public class CarMinimal {
 
+  private String uuid;
   private String make;
   private String model;
   private Integer year;
@@ -39,6 +44,14 @@ public class CarMinimal {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public String getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(String uuid) {
+    this.uuid = uuid;
   }
 
 

@@ -1,6 +1,7 @@
 package com.quintrix.carportalcarmicroservice.car;
 
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/car")
 public class CarController {
 
+  @Autowired
+  CarService carService;
+
   @RequestMapping(value = "", method = RequestMethod.POST)
   public CarEntity addCar(@RequestBody CarEntity car) {
 
     // return created car
-    return new CarEntity();
+    return carService.addCarEntity(car);
   }
 
   @RequestMapping(value = "", method = RequestMethod.GET)
@@ -26,14 +30,14 @@ public class CarController {
       @RequestParam(required = false, name = "model") Optional<String> model) {
 
     // return car search result
-    return new CarsList();
+    return carService.fetchCarMinimalByParam(make, model, year);
   }
 
   @RequestMapping(value = "{id}", method = RequestMethod.GET)
   public CarEntity getDetailedCar(@PathVariable("id") String id) {
 
     // return detailed car by uuid
-    return new CarEntity();
+    return carService.fetchcarDetailedById(id);
   }
 
 
@@ -41,12 +45,13 @@ public class CarController {
   public CarEntity updateCar(@RequestBody CarEntity car, @PathVariable("id") String id) {
 
     // return updated object
-    return new CarEntity();
+    return carService.updateCarEntity(car, id);
   }
 
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   public void DeleteCar(@PathVariable("id") String id) {
 
+    carService.deleteCarEntity(id);
     // return status / null
   }
 
