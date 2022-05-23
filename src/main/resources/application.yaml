@@ -8,32 +8,22 @@ spring:
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+    max-file-size: 100MB
+    max-request-size: 100MB
+
 server:
   port: 8080
   
 cloud:
   aws:
     credentials:
-      access-key: 
-      
-  cloud:
-   aws:
-      credentials:
-      secret-key: 
+      access-key: AKIAZDZ5DSYJC4OIP3TF
+      secret-key: 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
+    region:
+      static: us-east-1
+      use-default-aws-region-chain: true
          
-   cloud:
-      aws:
-       region:
-       static: us-east-1
-         
-      cloud:
-        aws:
-         stack:
-         auto: false
-
-  spring:
-    servlet:
-      multipart:
-      max-request-size: 100MB
-
-
+    stack:
+      auto: false
