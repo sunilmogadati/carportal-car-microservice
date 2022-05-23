@@ -1,7 +1,5 @@
 package com.quintrix.carportalcarmicroservice.filestorage;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +17,8 @@ public class FileController {
   private FileService fileservice;
 
   @PostMapping
-  public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) {
+  public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
     String publicUrl = fileservice.uploadFile(file);
-
-    Map<String, String> response = new HashMap<>();
-
-    response.put("publicUrl", publicUrl);
-
-    return new ResponseEntity<Map<String, String>>(response, HttpStatus.CREATED);
+    return new ResponseEntity<String>(publicUrl, HttpStatus.CREATED);
   }
 }
