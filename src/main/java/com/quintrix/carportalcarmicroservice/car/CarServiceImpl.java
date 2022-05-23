@@ -1,7 +1,9 @@
 package com.quintrix.carportalcarmicroservice.car;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,33 +29,21 @@ public class CarServiceImpl implements CarService {
   }
 
   @Override
-  public CarsList fetchCarMinimalByMake(String make) {
+  public CarsList fetchCarMinimalByParam(Optional<String> make, Optional<String> model,
+      Optional<Integer> year) {
     CarsList carsList = new CarsList();
-    List<CarMinimal> carList = carMinimalRepository.fetchCarMinimalByMake(make);
-    carsList.setCars(carList);
-    return carsList;
-  }
+    CarMinimal car = new CarMinimal();
 
-  @Override
-  public CarsList fetchCarMinimalByModel(String model) {
-    CarsList carsList = new CarsList();
-    List<CarMinimal> carList = carMinimalRepository.fetchCarMinimalByModel(model);
-    carsList.setCars(carList);
-    return carsList;
-  }
-
-  @Override
-  public CarsList fetchCarMinimalByYear(Integer year) {
-    CarsList carsList = new CarsList();
-    List<CarMinimal> carList = carMinimalRepository.fetchCarMinimalByYear(year);
-    carsList.setCars(carList);
-    return carsList;
-  }
-
-  @Override
-  public CarsList fetchCarMinimalByImageURL(String url) {
-    CarsList carsList = new CarsList();
-    List<CarMinimal> carList = carMinimalRepository.fetchCarMinimalByImageUrl(url);
+    if (make.isPresent()) {
+      car.setMake(make.get());
+    }
+    if (model.isPresent()) {
+      car.setModel(model.get());
+    }
+    if (year.isPresent()) {
+      car.setYear(year.get());
+    }
+    List<CarMinimal> carList = carMinimalRepository.findAll(Example.of(car));
     carsList.setCars(carList);
     return carsList;
   }

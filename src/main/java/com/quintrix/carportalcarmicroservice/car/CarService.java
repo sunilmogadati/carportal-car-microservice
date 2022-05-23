@@ -1,5 +1,7 @@
 package com.quintrix.carportalcarmicroservice.car;
 
+import java.util.Optional;
+
 public interface CarService {
 
   // Fetch the detailed car by its id
@@ -9,16 +11,8 @@ public interface CarService {
   CarsList fetchAllCarMinimal();
 
   // Fetch all the cars in the table that are of a specific make
-  CarsList fetchCarMinimalByMake(String make);
-
-  // Fetch all the cars in the table that are of a specific model
-  CarsList fetchCarMinimalByModel(String model);
-
-  // Fetch all the cars in the table that are of a specific year
-  CarsList fetchCarMinimalByYear(Integer year);
-
-  // Fetch all the cars in the table by image
-  CarsList fetchCarMinimalByImageURL(String url);
+  CarsList fetchCarMinimalByParam(Optional<String> make, Optional<String> model,
+      Optional<Integer> year);
 
   // Add car to table
   CarEntity addCarEntity(CarEntity carEntity);
