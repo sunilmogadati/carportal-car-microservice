@@ -31,11 +31,6 @@ cloud:
          stack:
          auto: false
 
-spring:
-  servlet:
-     multipart:
-     max-file-size: 100MB
-
   spring:
     servlet:
       multipart:
