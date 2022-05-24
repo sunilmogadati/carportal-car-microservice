@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalculatorController {
 
+  // http://localhost:8080/add?first=x&second=x
   @RequestMapping(method = RequestMethod.GET, value = "/add")
   Integer getAdd(@RequestParam(name = "first", required = true) Integer first,
       @RequestParam(name = "second", required = true) Integer second) {
