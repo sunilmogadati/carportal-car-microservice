@@ -6,6 +6,7 @@ Create table If Not Exists `car_info` (
 	`model` varchar(50),
 	`year` int,
 	`mileage` int,
+	`miles_per_gallon` int,
 	`list_price` int,
 	`kbb_est` int default null,
 	`desc` varchar(1000),
