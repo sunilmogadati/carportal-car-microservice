@@ -33,7 +33,7 @@ public class CarController {
     return carService.fetchCarMinimalByParam(make, model, year);
   }
 
-  @RequestMapping(value = "{id}", method = RequestMethod.GET)
+  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public CarEntity getDetailedCar(@PathVariable("id") String id) {
 
     // return detailed car by uuid
@@ -41,14 +41,14 @@ public class CarController {
   }
 
 
-  @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public CarEntity updateCar(@RequestBody CarEntity car, @PathVariable("id") String id) {
 
     // return updated object
     return carService.updateCarEntity(car, id);
   }
 
-  @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   public void DeleteCar(@PathVariable("id") String id) {
 
     carService.deleteCarEntity(id);
