@@ -8,6 +8,10 @@ spring:
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+    max-file-size: 100MB
+    max-request-size: 100MB
 
 server:
     port: 8080
@@ -24,8 +28,4 @@ cloud:
     stack:
        auto: false
 
-  spring:
-   servlet:
-     multipart:
-     max-file-size: 100MB
-     max-request-size: 100MB
+ 
