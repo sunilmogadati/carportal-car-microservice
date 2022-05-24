@@ -1,33 +1,51 @@
 package com.quintrix.carportalcarmicroservice.car;
 
-import java.util.HashMap;
-import org.hibernate.annotations.Entity;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quintrix.carportalcarmicroservice.customer.CustomerModel;
 
-@SuppressWarnings("deprecation")
+@Table(name = "car_info")
 @Entity
 public class CarEntity {
 
   // uuid is similar to id, except it is a random String
+  @Id
+  @Column(name = "id")
   private String uuid;
 
   private String make;
   private String model;
   private Integer year;
   private Integer mileage;
-  private Integer milesPerGallon;
+  @Column(name = "kbb_est")
   private Integer KellyBlueBookEstemate;
+  @Column(name = "user_desc")
   private String description;
   private Integer listPrice;
 
-  // needed for kbb estimate
-  private String condition;
 
-  // curent owner from customers
-  private CustomerModel owner;
+  // owners list from customers, not stored in database, marked transient
+  @Transient
+  private List<CustomerModel> ownerList;
 
-  // url locations for s3 bucket / key is image order / value is url for image
-  private HashMap<Integer, String> images;
+  // agent list from external, not stored in database, marked transient
+  @Transient
+  private List<CustomerModel> AgentList;
+
+  // url locations for s3 bucket, not stored in table, marked transient
+  @Transient
+  private List<CarImagesEntity> images;
+
+  @JsonIgnore
+  // getter ignored by jackson and used to convert carEntity onto CarMinimal
+  public CarMinimal getCarMinimal() {
+    return new CarMinimal(this.uuid, this.make, this.model, this.year, this.listPrice);
+  }
 
   public String getUuid() {
     return uuid;
@@ -69,14 +87,6 @@ public class CarEntity {
     this.mileage = mileage;
   }
 
-  public Integer getMilesPerGallon() {
-    return milesPerGallon;
-  }
-
-  public void setMilesPerGallon(Integer milesPerGallon) {
-    this.milesPerGallon = milesPerGallon;
-  }
-
   public Integer getKellyBlueBookEstemate() {
     return KellyBlueBookEstemate;
   }
@@ -101,30 +111,28 @@ public class CarEntity {
     this.listPrice = listPrice;
   }
 
-  public String getCondition() {
-    return condition;
-  }
-
-  public void setCondition(String condition) {
-    this.condition = condition;
-  }
-
-  public CustomerModel getOwner() {
-    return owner;
-  }
-
-  public void setOwner(CustomerModel owner) {
-    this.owner = owner;
-  }
-
-  public HashMap<Integer, String> getImages() {
+  public List<CarImagesEntity> getImages() {
     return images;
   }
 
-  public void setImages(HashMap<Integer, String> images) {
+  public void setImages(List<CarImagesEntity> images) {
     this.images = images;
   }
 
+  public List<CustomerModel> getAgentList() {
+    return AgentList;
+  }
 
+  public void setAgentList(List<CustomerModel> agentList) {
+    AgentList = agentList;
+  }
+
+  public void setOwnerList(List<CustomerModel> ownerList) {
+    this.ownerList = ownerList;
+  }
+
+  public List<CustomerModel> getOwnerList() {
+    return this.ownerList;
+  }
 
 }
