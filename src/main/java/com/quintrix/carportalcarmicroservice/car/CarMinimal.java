@@ -1,18 +1,45 @@
 package com.quintrix.carportalcarmicroservice.car;
 
-import org.hibernate.annotations.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@SuppressWarnings("deprecation")
-@Entity
+// this is not an entity
 public class CarMinimal {
 
   private String uuid;
   private String make;
   private String model;
   private Integer year;
+  private Integer listPrice;
   // this is the image shown to the customer in non detail view
   // should be index 1 (first image) in CarEntity.images HashMap
   private String imageUrl;
+
+  // constructor called by carEntity
+  public CarMinimal(String uuid, String make, String model, Integer year, Integer listPrice) {
+    this.uuid = uuid;
+    this.year = year;
+    this.make = make;
+    this.model = model;
+    this.listPrice = listPrice;
+  }
+
+  // default constructor
+  public CarMinimal() {}
+
+  // hack to set image via map without creating new object
+  @JsonIgnore
+  public CarMinimal setImageUrlAndReturnSelf(String imageUrl) {
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+  public Integer getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Integer listPrice) {
+    this.listPrice = listPrice;
+  }
 
   public String getMake() {
     return make;
@@ -41,6 +68,7 @@ public class CarMinimal {
   public String getImageUrl() {
     return imageUrl;
   }
+
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
