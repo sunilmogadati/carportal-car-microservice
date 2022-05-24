@@ -7,9 +7,6 @@ public interface CarService {
   // Fetch the detailed car by its id
   CarEntity fetchcarDetailedById(String uuid);
 
-  // Fetch all the cars in the table through the wrapper class CarsList
-  CarsList fetchAllCarMinimal();
-
   // Fetch all the cars in the table that are of a specific make
   CarsList fetchCarMinimalByParam(Optional<String> make, Optional<String> model,
       Optional<Integer> year);
