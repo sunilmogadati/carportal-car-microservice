@@ -36,3 +36,8 @@ logging:
           EC2MetadataUtils: error
         internal:
           InstanceMetadataServiceResourceFetcher: error 
+
+application:
+  finance-length: 36
+
+

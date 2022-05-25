@@ -27,6 +27,8 @@ public class CarEntity {
   @Column(name = "user_desc")
   private String description;
   private Integer listPrice;
+  @Transient
+  private Integer monthlyPayment;
 
 
   // owners list from customers, not stored in database, marked transient
@@ -134,5 +136,14 @@ public class CarEntity {
   public List<CustomerModel> getOwnerList() {
     return this.ownerList;
   }
+
+  public Integer getMonthlyPayment() {
+    return monthlyPayment;
+  }
+
+  public void setMonthlyPayment(Integer monthlyPayment) {
+    this.monthlyPayment = monthlyPayment;
+  }
+
 
 }
