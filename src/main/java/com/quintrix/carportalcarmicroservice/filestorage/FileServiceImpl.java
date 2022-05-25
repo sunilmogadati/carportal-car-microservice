@@ -37,7 +37,7 @@ public class FileServiceImpl implements FileService {
 
 
     // if the car model dont exist do not upload file
-    if (carentity.isEmpty()) {
+    if (!carentity.isPresent()) {
       System.out.print("Empty Object");
       return null;
     }
