@@ -4,9 +4,9 @@ spring:
     hibernate:
       ddl-auto: none
   datasource: 
-    url: jdbc:mysql://localhost:3306/quintrix
+    url: jdbc:mysql://localhost:3306/JDBCDemo
     username: root
-    password: 
+    password: Jeffn00n
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
@@ -19,8 +19,8 @@ server:
 cloud:
   aws:
     credentials:
-       access-key: 
-       secret-key: 
+       access-key: AKIAZDZ5DSYJC4OIP3TF
+       secret-key: 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
     region:
        static: us-east-1
        use-default-aws-region-chain: true
