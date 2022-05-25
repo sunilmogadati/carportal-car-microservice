@@ -19,8 +19,8 @@ server:
 cloud:
   aws:
     credentials:
-       access-key: AKIAZDZ5DSYJC4OIP3TF
-       secret-key: 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
+       access-key: 
+       secret-key: 
     region:
        static: us-east-1
        use-default-aws-region-chain: true
