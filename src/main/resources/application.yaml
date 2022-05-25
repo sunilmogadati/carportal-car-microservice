@@ -4,10 +4,10 @@ spring:
     hibernate:
       ddl-auto: none
   datasource: 
-    url: jdbc:mysql://localhost:3306/quintrix
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://car-service.czibfhut1usj.us-east-2.rds.amazonaws.com/cars
+    username: quintrix_cars
+    password: xtUVF6Yf685RhGJ5
+    
   servlet:
     multipart:
     max-file-size: 100MB
@@ -29,10 +29,12 @@ cloud:
        auto: false
 
 logging:
- level:
-  com:
-   amazonaws:
-    util:
-     EC2MetadataUtils: error
-    internal:
-     InstanceMetadataServiceResourceFetcher: error
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+        internal:
+          InstanceMetadataServiceResourceFetcher: error 
+          
+
