@@ -36,4 +36,7 @@ logging:
      EC2MetadataUtils: error
     internal:
      InstanceMetadataServiceResourceFetcher: error
- 
+
+     
+agentService:
+ getUrl: https://gorest.co.in/public/v2/users     
