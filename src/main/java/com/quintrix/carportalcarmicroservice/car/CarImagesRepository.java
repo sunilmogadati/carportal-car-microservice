@@ -14,4 +14,5 @@ public interface CarImagesRepository extends JpaRepository<CarImagesEntity, Stri
   @Query("select i from CarImagesEntity i where i.carInfoId = ?1")
   public List<CarImagesEntity> getAllPicturesForCar(String uuid);
 
+  List<CarImagesEntity> findByCarInfoId(String carInfoId);
 }
