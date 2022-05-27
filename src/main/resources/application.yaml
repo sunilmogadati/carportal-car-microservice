@@ -15,6 +15,11 @@ spring:
 
 server:
     port: 8080
+
+previousOwnerSerivce:
+    getUrl: http://localhost:8080/customers
+    name: root
+    password: toor
   
 cloud:
   aws:
