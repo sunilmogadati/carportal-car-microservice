@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CarportalCarMicroserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CarportalCarMicroserviceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(CarportalCarMicroserviceApplication.class, args);
+  }
 
 }
