@@ -4,7 +4,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource: 
-    url: jdbc:mysql://car-service.czibfhut1usj.us-east-2.rds.amazonaws.com/cars
+    url: jdbc:mysql://carservice.czibfhut1usj.us-east-2.rds.amazonaws.com/cars
     username: quintrix_cars
     password: xtUVF6Yf685RhGJ5
     
@@ -15,6 +15,11 @@ spring:
 
 server:
     port: 8080
+
+previousOwnerSerivce:
+    getUrl: http://localhost:8080/customers
+    name: root
+    password: toor
   
 cloud:
   aws:
