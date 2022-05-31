@@ -44,5 +44,7 @@ logging:
 
 application:
   finance-length: 36
-
+  
+agentService:
+  getUrl: https://gorest.co.in/public/v2/users     
 
