@@ -3,6 +3,7 @@ package com.quintrix.carportalcarmicroservice.car;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 
-// TODO autowire cars service interface and call interface with return
 @OpenAPIDefinition(info = @Info(title = "The Car API for Place4Cars"))
 @Tag(name = "Car API", description = "Create, retrieve, update, and delete cars.")
 
 @RestController
 @RequestMapping("/car")
+@CrossOrigin
 public class CarController {
 
   @Autowired
