@@ -1,7 +1,7 @@
 package com.quintrix.carportalcarmicroservice.agents;
 
 import java.util.List;
-import java.util.Optional;
+import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -39,14 +39,22 @@ public class AgentsServiceImpl implements AgentsService {
   }
 
   @Override
-  public AgentsEntity getAgent(int id) {
+  public Agent getAgent(int id) {
+
+    // TEST CASE: id = 4
+    ResponseEntity<Agent> getAgents =
+        restTemplate.exchange(agentServiceGetUrl + "/" + id, HttpMethod.GET, null, Agent.class);
+
+    return getAgents.getBody();
 
 
-    List<AgentsEntity> agentsList = getAgentList();
+    // Work around: No longer needed
 
-    Optional<AgentsEntity> agent = agentsList.stream().filter(x -> x.getId().equals(id)).findAny();
+    // List<AgentsEntity> agentsList = getAgentList();
+    // Optional<AgentsEntity> agent = agentsList.stream().filter(x ->
+    // x.getId().equals(id)).findAny();
 
-    return agent.get();
+    // return agent.get();
 
 
   }
