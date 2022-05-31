@@ -7,10 +7,15 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import com.quintrix.carportalcarmicroservice.exception.CarNotFoundException;
+import com.quintrix.carportalcarmicroservice.filestorage.FileService;
+import com.quintrix.carportalcarmicroservice.soap.calculator.Calculator;
+import com.quintrix.carportalcarmicroservice.soap.calculator.CalculatorSoap;
+
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -20,6 +25,14 @@ public class CarServiceImpl implements CarService {
 
   @Autowired
   CarImagesRepository carImagesRepository;
+
+
+  @Autowired
+  FileService fileservice;
+
+  @Value("${application.finance-length}")
+  private int financeLength;
+
 
   private static final Logger log = LoggerFactory.getLogger(CarServiceImpl.class);
 
@@ -35,7 +48,13 @@ public class CarServiceImpl implements CarService {
     carDetailed.setImages(carImagesRepository.getAllPicturesForCar(uuid));
 
     // TODO get precious owners with RestTemplate call
+
     // TODO SOAP call to get monthly payment
+    Calculator calcService = new Calculator();
+    CalculatorSoap calculatorSoapProxy = calcService.getCalculatorSoap();
+    carDetailed
+        .setMonthlyPayment((calculatorSoapProxy.divide(carDetailed.getListPrice(), financeLength)));
+
     // TODO add agents list via rest template
 
     log.info("get car details completed with id of " + uuid);
@@ -105,6 +124,8 @@ public class CarServiceImpl implements CarService {
 
     try {
       carEntityRepository.deleteById(id);
+      fileservice.deletePhotos(id);
+
     } catch (EmptyResultDataAccessException ex) {
       log.info(id + " not found");
       throw new CarNotFoundException("car not found", id + " not found");
