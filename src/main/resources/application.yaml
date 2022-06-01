@@ -24,8 +24,8 @@ previousOwnerSerivce:
 cloud:
   aws:
     credentials:
-       access-key: AKIAVOSMRAGUBNCN2HFV
-       secret-key: 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
+       access-key: 
+       secret-key: 
     region:
        static: us-east-1
        use-default-aws-region-chain: true
