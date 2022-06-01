@@ -24,8 +24,8 @@ previousOwnerSerivce:
 cloud:
   aws:
     credentials:
-       access-key: 
-       secret-key: 
+       access-key: AKIAVOSMRAGUBNCN2HFV
+       secret-key: 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
     region:
        static: us-east-1
        use-default-aws-region-chain: true
@@ -45,4 +45,8 @@ logging:
 application:
   finance-length: 36
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
