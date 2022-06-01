@@ -44,7 +44,16 @@ logging:
 
 application:
   finance-length: 36
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
   
 agentService:
   getUrl: https://gorest.co.in/public/v2/users     
+
 
