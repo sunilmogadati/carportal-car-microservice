@@ -11,6 +11,7 @@ on:
   push:
     branches:
       - tr
+      
 jobs:
   #Test's job
   tests:
@@ -74,7 +75,7 @@ jobs:
       - name: Analyze with SonarCloud
         run: mvn -B verify sonar:sonar
         
-   build:
+  build:
     #Depends on sonar's job
     needs: sonar
     name: Build
