@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -28,10 +29,18 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/car")
 @CrossOrigin
+
 public class CarController {
 
   @Autowired
   CarService carService;
+
+  // This needs to be placed correctly to return circuit breaker info. localhost/8080/actuator shows
+  // circuit breaker calls
+  private static final String CAR = "searchCars";
+
+  @CircuitBreaker(name = CAR)
+
 
   @Operation(summary = "Add a car.")
   @ApiResponse(responseCode = "200",
@@ -47,13 +56,11 @@ public class CarController {
     return carService.addCarEntity(car);
   }
 
-
   @Operation(
       summary = "Retrieve basic information on a list of cars. Can filter by Make/Model/Year")
   @ApiResponse(responseCode = "200",
       content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
           array = @ArraySchema(schema = @Schema(implementation = CarMinimal.class))))
-
   @RequestMapping(value = "", method = RequestMethod.GET)
   public CarsList searchCars(@RequestParam(required = false, name = "year") Optional<Integer> year,
       @RequestParam(required = false, name = "make") Optional<String> make,
