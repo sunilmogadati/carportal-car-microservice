@@ -28,10 +28,11 @@ cloud:
        secret-key: 
     region:
        static: us-east-1
-       use-default-aws-region-chain: true
-         
+       auto: false
     stack:
        auto: false
+    paramstore:
+       enabled: false
 
 logging:
   level:
