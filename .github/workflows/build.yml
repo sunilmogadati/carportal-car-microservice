@@ -10,7 +10,7 @@ on:
 
   push:
     branches:
-      - develop
+      - tr
       
 jobs:
   #Test's job
